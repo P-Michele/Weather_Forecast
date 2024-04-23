@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  meteoweb:
+    container_name: RESTmeteo
+    image: ${DOCKER_REGISTRY-}meteoweb
+    build:
+      context: .
+      dockerfile: MeteoWeb/Dockerfile
+    ports:
+     - 62274:8080
+
+  soapmeteo:
+    container_name: SOAPmeteo
+    image: ${DOCKER_REGISTRY-}soapmeteo
+    build:
+      context: .
+      dockerfile: SOAPMeteo/Dockerfile
+    ports:
+    - 62275:8080
+

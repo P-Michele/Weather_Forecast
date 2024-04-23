@@ -1,0 +1,36 @@
+﻿@model MeteoWeb.ViewModels.BollettinoVisualizzaViewModel
+@{
+    Layout = null;
+}
+
+@if (Model != null && Model.Localita != null && Model.Localita.Any())
+{
+    <table style="border-collapse: collapse; width: 100%; text-align: center; border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Località</th>
+            <th style="border: 1px solid black;">Quota</th>
+            <th style="border: 1px solid black;">Giorno</th>
+            <th style="border: 1px solid black;">Temp. Minima</th>
+            <th style="border: 1px solid black;">Temp. Massima</th>
+            <th style="border: 1px solid black;">Descrizione Condizioni</th>
+            <th style="border: 1px solid black;">Icona</th>
+        </tr>
+
+        @for (int i = 0; i < Model.Localita.Count; i++)
+        {
+            <tr>
+                <td style="border: 1px solid black;">@Model.Localita[i]</td>
+                <td style="border: 1px solid black;">@Model.Quota[i]</td>
+                <td style="border: 1px solid black;">@Model.Giorno[i]</td>
+                <td style="border: 1px solid black;">@Model.TemperaturaMinima[i]</td>
+                <td style="border: 1px solid black;">@Model.TemperaturaMassima[i]</td>
+                <td style="border: 1px solid black;">@Model.DescrizioneCondizioni[i]</td>
+                <td style="border: 1px solid black;"><img src="@Model.Icona[i]" alt="Icona Meteo"></td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Nessuna informazione disponibile.</p>
+}
